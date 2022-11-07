@@ -22,59 +22,36 @@ public class SplashActivity extends AppCompatActivity {
     ImageView logo, appName, splashImg;
     LottieAnimationView lottieAnimationView;
     private static final int NUM_PAGES = 3;
-    private ViewPager viewPager;
-    private ScreenSlidePagerAdaptor pageradaptor;
-    Animation anim;
+    ViewPager viewPager;
+    ScreenSlidePagerAdapter pagerAdapter;
 
-    private static int SPLASH_TIME_OUT = 5000;
-    SharedPreferences mSharedPreferences;
+    Animation anim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        logo = findViewById(R.id.Logo);
+        logo = findViewById(R.id.logo);
         appName = findViewById(R.id.app_name);
         splashImg = findViewById(R.id.img);
-        lottieAnimationView = findViewById(R.id.lottieId);
+        lottieAnimationView = findViewById(R.id.lottie);
 
         viewPager = findViewById(R.id.pager);
-        pageradaptor = new ScreenSlidePagerAdaptor(getSupportFragmentManager());
-        viewPager.setAdapter(pageradaptor);
+        pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(pagerAdapter);
+        anim = AnimationUtils.loadAnimation(this,R.anim.o_b_anim);
+        viewPager.startAnimation(anim);
 
-        anim = AnimationUtils.loadAnimation(this, R.anim.my_anim);
-        viewPager.setAnimation(anim);
-
-        splashImg.animate().translationY(-1600).setDuration(1000).setStartDelay(4000);
-        logo.animate().translationY(1400).setDuration(1000).setStartDelay(4000);
-        appName.animate().translationY(1400).setDuration(1000).setStartDelay(4000);
-        lottieAnimationView.animate().translationY(1400).setDuration(1000).setStartDelay(4000);
-
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mSharedPreferences = getSharedPreferences("mySp",MODE_PRIVATE);
-                boolean isFirstTime =mSharedPreferences.getBoolean("firstTime",true);
-
-                if (isFirstTime) {
-                    SharedPreferences.Editor editor = mSharedPreferences.edit();
-                    editor.putBoolean("firstTime", false);
-                    editor.commit();
-                } else {
-                    Intent intent = new Intent(SplashActivity.this,MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }
-        },SPLASH_TIME_OUT);
-
+        splashImg.animate().translationY(-2300).setDuration(1000).setStartDelay(5000);
+        logo.animate().translationY(3000).setDuration(1000).setStartDelay(5000);
+        appName.animate().translationY(3000).setDuration(1000).setStartDelay(5000);
+        lottieAnimationView.animate().translationY(3000).setDuration(1000).setStartDelay(5000);
     }
 
-    private class ScreenSlidePagerAdaptor extends FragmentStatePagerAdapter {
+    private static class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
 
-        public ScreenSlidePagerAdaptor(@NonNull FragmentManager fm) {
+        public ScreenSlidePagerAdapter(@NonNull FragmentManager fm) {
             super(fm);
         }
 
@@ -83,14 +60,11 @@ public class SplashActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    OnBoardingFragment tab1 = new OnBoardingFragment();
-                    return tab1;
+                    return new OnBoardingFragment();
                 case 1:
-                    OnBoardingFragment2 tab2 = new OnBoardingFragment2();
-                    return tab2;
+                    return new OnBoardingFragment2();
                 case 2:
-                    OnBoardingFragment3 tab3 = new OnBoardingFragment3();
-                    return tab3;
+                    return new OnBoardingFragment3();
             }
             return null;
         }
@@ -100,5 +74,4 @@ public class SplashActivity extends AppCompatActivity {
             return NUM_PAGES;
         }
     }
-
 }
