@@ -1,9 +1,8 @@
-package com.foysal.official;
+package com.CannineShop.official;
 
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -26,6 +25,8 @@ public class SplashActivity extends AppCompatActivity {
     ScreenSlidePagerAdapter pagerAdapter;
 
     Animation anim;
+    //Variables Transicion
+    public static int zoom_out = R.anim.zoom_out;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,5 +74,20 @@ public class SplashActivity extends AppCompatActivity {
         public int getCount() {
             return NUM_PAGES;
         }
+    }
+
+    //🡣🡣🡣Proceso Al Dar Click a Retroceder🡣🡣🡣
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("¿Deseas Salir De CannineShop")
+                .setPositiveButton("Si", (dialog, which) -> {
+                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                    intent.addCategory(Intent.CATEGORY_HOME);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    overridePendingTransition(0, zoom_out);
+                    finish();
+                }).setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
+        builder.show();
     }
 }

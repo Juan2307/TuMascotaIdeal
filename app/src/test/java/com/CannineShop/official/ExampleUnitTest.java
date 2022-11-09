@@ -1,4 +1,4 @@
-package com.foysal.official;
+package com.CannineShop.official;
 
 import org.junit.Test;
 

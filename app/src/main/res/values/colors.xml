@@ -12,4 +12,10 @@
     <color name="pink" >#f469a9</color>
     <color name="blue" >#88bef5</color>
     <color name="traslucido">#0000ffff </color>
+
+
+    <color name="colorAccent">#F44336</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#757575</color>
+    <color name="colorDivider">#BDBDBD</color>
 </resources>

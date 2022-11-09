@@ -1,18 +1,20 @@
-package com.foysal.official.Destinos;
+package com.CannineShop.official.Destinos;
 
 public class Destinos {
     //Atributos
     private String nombre;
     private String email;
+    private String telefono;
 
     //Constructor Vacio
     public Destinos() {
         super();
     }
 
-    public Destinos(String nombre, String email) {
+    public Destinos(String nombre, String email, String telefono) {
         this.nombre = nombre;
         this.email = email;
+        this.telefono = telefono;
     }
 
     public String getNombre() {
@@ -29,5 +31,13 @@ public class Destinos {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }

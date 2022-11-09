@@ -1,4 +1,4 @@
-package com.foysal.official.Internet;
+package com.CannineShop.official.Internet;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
