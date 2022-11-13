@@ -1,4 +1,4 @@
-package com.CannineShop.official;
+package com.CannineShop.official.OnBoarding;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.CannineShop.official.MainActivity;
+import com.CannineShop.official.R;
 
 public class OnBoardingFragment extends Fragment {
 
@@ -24,7 +27,7 @@ public class OnBoardingFragment extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_on_boarding1, container, false);
         skip = root.findViewById(R.id.Skip);
         skip.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(),MainActivity.class);
+            Intent intent = new Intent(getActivity(), MainActivity.class);
             getActivity().overridePendingTransition(0, desplazamiento_arriba);
             startActivity(intent);
             getActivity().finish();

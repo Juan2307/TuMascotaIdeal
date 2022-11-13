@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:text="Team"
+        android:text="Equipo"
         android:textSize="42sp"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:text="Juan Leandro"
+        android:text="Juan Leandro-  Jhojan Diaz"
         android:textSize="50sp"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -82,11 +82,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0"/>
 
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Tecnologo En Adsis"
+        android:text="Juan es Tecnologo En Adsis. Jhojan Diaz es Estudiante."
         android:textSize="16sp"
         app:layout_constraintHeight_percent=".1"
         app:layout_constraintHorizontal_bias="0"

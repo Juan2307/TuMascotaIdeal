@@ -5,12 +5,14 @@
     android:layout_height="match_parent"
     android:background="@color/pink">
 
-    <ImageView
-
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/imagenView"
+        app:lottie_autoPlay="true"
+        app:lottie_repeatCount="999999999"
+        android:elevation="2dp"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/img3"
+        app:lottie_rawRes="@raw/o_b3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.293"
@@ -55,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:text="Easy"
+        android:text="Ecuentra El"
         android:textColor="@color/white"
         android:textSize="42sp"
         app:layout_constraintHorizontal_bias="0"
@@ -70,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:text="Payment"
+        android:text="Tuyo"
         android:textSize="56sp"
         android:textColor="@color/white"
         android:textStyle="bold"
@@ -85,7 +87,7 @@
         android:id="@+id/textView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="xxxxxxxxxxxxxxxxxxxxxxx yyyyyyyyyyyyyyyyyyyyyyyy "
+        android:text="En un mal momento, cuando necesité una mano amiga, incondicional, recibí… una pata"
         android:textSize="16sp"
         android:textColor="@color/white"
         app:layout_constraintHeight_percent=".1"

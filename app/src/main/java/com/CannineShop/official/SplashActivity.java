@@ -14,6 +14,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.CannineShop.official.OnBoarding.OnBoardingFragment;
+import com.CannineShop.official.OnBoarding.OnBoardingFragment2;
+import com.CannineShop.official.OnBoarding.OnBoardingFragment3;
 import com.airbnb.lottie.LottieAnimationView;
 
 public class SplashActivity extends AppCompatActivity {
