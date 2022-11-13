@@ -56,44 +56,63 @@
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Password"
+            android:hint="Contraseña"
             android:drawableStart="@android:drawable/ic_lock_idle_lock"
             android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <!--Button Login-->
-    <Button
-        android:id="@+id/login"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:cornerRadius="30dp"
-        android:backgroundTint="@color/pink"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/imagenView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPasswordLogin"
-        app:layout_constraintVertical_bias=".7"
-        app:layout_constraintWidth_percent=".8" />
+        app:layout_constraintVertical_bias="0.483"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/animales"
+        app:lottie_repeatCount="999999999" />
 
-    <!--Txt ForgetPass-->
+
     <TextView
         android:id="@+id/forgetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
-        android:text="Forget Password"
+        android:text="Olvide Mi Contraseña"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/txtPasswordLogin"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPasswordLogin"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.028" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/pink"
+        android:text="Iniciar Sesión"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPasswordLogin"
+        app:layout_constraintVertical_bias="0.736"
+        app:layout_constraintWidth_percent=".8" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

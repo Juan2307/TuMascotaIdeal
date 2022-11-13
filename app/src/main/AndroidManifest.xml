@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Permiso Internet -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,36 +12,50 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Flashlight">
         <activity
-            android:name=".VeryfyCode"
-            android:exported="false">
+            android:name=".ForgotPassword"
+            android:exported="false"
+            android:theme="@style/ConActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SendCode"
-            android:exported="false">
+            android:name=".SMS.VeryfyCode"
+            android:exported="false"
+            android:theme="@style/ConActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".SMS.SendCode"
+            android:exported="false"
+            android:theme="@style/ConActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Home"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/SinActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/SinActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+
+        <activity android:name=".MainActivity"
+            android:theme="@style/SinActionBar"/>
     </application>
 
 </manifest>
