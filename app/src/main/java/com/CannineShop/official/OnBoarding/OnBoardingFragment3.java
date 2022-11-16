@@ -11,9 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.CannineShop.official.Home;
 import com.CannineShop.official.MainActivity;
 import com.CannineShop.official.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class OnBoardingFragment3 extends Fragment {
 
@@ -32,17 +37,33 @@ public class OnBoardingFragment3 extends Fragment {
 
 
         button.setOnClickListener(view -> {
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            getActivity().overridePendingTransition(0, desplazamiento_arriba);
-            startActivity(intent);
-            getActivity().finish();
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
+            if (user != null || account != null) {
+                getActivity().overridePendingTransition(0, desplazamiento_arriba);
+                startActivity(new Intent(getActivity(), Home.class));
+                getActivity().finish();
+            }else{
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                getActivity().overridePendingTransition(0, desplazamiento_arriba);
+                startActivity(intent);
+                getActivity().finish();
+            }
         });
 
         skip.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(),MainActivity.class);
-            getActivity().overridePendingTransition(0, desplazamiento_arriba);
-            startActivity(intent);
-            getActivity().finish();
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
+            if (user != null || account != null) {
+                getActivity().overridePendingTransition(0, desplazamiento_arriba);
+                startActivity(new Intent(getActivity(), Home.class));
+                getActivity().finish();
+            }else{
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                getActivity().overridePendingTransition(0, desplazamiento_arriba);
+                startActivity(intent);
+                getActivity().finish();
+            }
         });
         return root;
     }

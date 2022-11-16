@@ -12,10 +12,26 @@
     <color name="pink" >#f469a9</color>
     <color name="blue" >#88bef5</color>
     <color name="traslucido">#0000ffff </color>
+    <color name="LightWhite">#f2f5f8 </color>
 
 
     <color name="colorAccent">#F44336</color>
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextSecondary">#757575</color>
     <color name="colorDivider">#BDBDBD</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#0FDC17</color>
+
+    <!-- Dashboard Colors -->
+    <!-- Body and backgound Colors -->
+    <color name="colorAccent2">#272727</color>
+    <color name="home_background">#f2f5f8</color>
+    <color name="banner_background">#f1e9ce</color>
+    <color name="banner_background_light">#56f1e9ce</color>
+
+    <!-- Card Colors-->
+    <color name="card1">#d4cbe5</color>
+    <color name="card2">#7adccf</color>
+    <color name="card3">#f7c59f</color>
+    <color name="card4">#b8d7f5</color>
 </resources>

@@ -170,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="REENVIAR CODIGO"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorAccent2"
                 android:textSize="15sp"
                 android:textStyle="bold"/>
 

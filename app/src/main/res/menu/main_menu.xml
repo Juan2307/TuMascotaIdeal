@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Home"
+            tools:ignore="HardcodedText" />
+    </group>
+
+    <item
+        android:title="Profile"
+        tools:ignore="HardcodedText">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_perfil"
+                    android:icon="@drawable/ic_profile"
+                    android:title="Actualizar Datos"
+                    tools:ignore="HardcodedText" />
+                <item
+                    android:id="@+id/nav_actualizar"
+                    android:icon="@android:drawable/ic_lock_lock"
+                    android:title="Actualizar Contraseña"
+                    tools:ignore="HardcodedText" />
+                <item
+                    android:id="@+id/nav_eliminar"
+                    android:icon="@android:drawable/ic_lock_lock"
+                    android:title="Eliminar Cuenta"
+                    tools:ignore="HardcodedText" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:title="¿Quienes Somos?"
+        tools:ignore="HardcodedText">
+        <menu>
+            <group android:checkableBehavior="none">
+                <item
+                    android:id="@+id/nav_acercade"
+                    android:icon="@android:drawable/ic_dialog_info"
+                    android:title="Acerca De CaninneShop"
+                    tools:ignore="HardcodedText" />
+
+            </group>
+        </menu>
+    </item>
+
+
+    <item
+        android:title="Maps"
+        tools:ignore="HardcodedText">
+        <menu>
+            <group android:checkableBehavior="none">
+                <item
+                    android:id="@+id/nav_maps"
+                    android:icon="@android:drawable/ic_dialog_map"
+                    android:title="Lugares"
+                    tools:ignore="HardcodedText" />
+
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:title="Prototipos"
+        tools:ignore="HardcodedText">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/nav_mockups"
+                    android:icon="@drawable/mockup"
+                    android:title="Mockups"
+                    tools:ignore="HardcodedText" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:title="Soporte"
+        tools:ignore="HardcodedText">
+        <menu>
+            <group android:checkableBehavior="none">
+                <item
+                    android:id="@+id/nav_ayuda"
+                    android:icon="@android:drawable/ic_menu_help"
+                    android:title="Ayuda"
+                    tools:ignore="HardcodedText" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:title="Salir"
+        tools:ignore="HardcodedText">
+        <menu>
+            <group android:checkableBehavior="none">
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/logout"
+                    android:title="Logout"
+                    tools:ignore="HardcodedText" />
+
+            </group>
+        </menu>
+    </item>
+
+</menu>

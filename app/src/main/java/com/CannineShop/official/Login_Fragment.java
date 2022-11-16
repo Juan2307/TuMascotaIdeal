@@ -3,7 +3,7 @@ package com.CannineShop.official;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
+
 import androidx.fragment.app.Fragment;
 
 import android.util.Patterns;
@@ -118,16 +118,16 @@ public class Login_Fragment extends Fragment {
 
     //🡣🡣🡣Validar Si La Cuenta Existe🡣🡣🡣
     private void iniciarSesion(String email, String password) {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                if (!user.isEmailVerified()) {
-                    Toast.makeText(getContext(), "Correo Electronico No Ha Sido Verificado...Revisar Correo En SPAM", Toast.LENGTH_LONG).show();
-                } else {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user.isEmailVerified()) {
                     Toast.makeText(getContext(), "Inicio", Toast.LENGTH_SHORT).show();
                     getActivity().overridePendingTransition(0, translateUp);
                     startActivity(new Intent(getContext(), Home.class));
                     getActivity().finish();
+                } else {
+                    Toast.makeText(getContext(), "Correo Electronico No Ha Sido Verificado...Revisar Correo En SPAM", Toast.LENGTH_LONG).show();
                 }
             }
         }).addOnFailureListener(e -> Toast.makeText(getContext(), "Usuario y/o Contraseña Incorrectos", Toast.LENGTH_SHORT).show());

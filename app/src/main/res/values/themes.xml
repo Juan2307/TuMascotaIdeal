@@ -41,4 +41,13 @@
         <!-- Customize your theme here. -->
     </style>
 
+
+    <!-- Menu Style-->
+    <style name="navigationTheme">
+        <!-- Color of text and icon when SELECTED-->
+        <item name="colorPrimary">@color/pink</item>
+        <!-- Background color when SELECTED-->
+        <item name="colorControlHighlight">@color/colorAccent2</item>
+    </style>
+
 </resources>

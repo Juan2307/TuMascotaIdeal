@@ -1,5 +1,6 @@
 package com.CannineShop.official;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -26,12 +27,15 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
+import dmax.dialog.SpotsDialog;
+
 public class SignUpFragment extends Fragment {
 
     //Variables
     TextInputEditText nameTextField, telefonoTextField, emailEditText, passwordEditText, confirmPasswordEditText;
     Button singUp;
     ProgressBar progressBar;
+    AlertDialog mdialog;
     // Transicion
     public static int translateUp = R.anim.slide_out_up;
     @Override
@@ -44,6 +48,7 @@ public class SignUpFragment extends Fragment {
         confirmPasswordEditText = root.findViewById(R.id.confirmPasswordEditText);
         telefonoTextField = root.findViewById(R.id.telefonoTextField);
         progressBar = root.findViewById(R.id.progressBar);
+        mdialog = new SpotsDialog.Builder().setContext(getContext()).setMessage("Espere Un Momento").setCancelable(false).build();
 
         singUp = root.findViewById(R.id.btnSignup);
         singUp.setOnClickListener(v -> {
@@ -161,8 +166,7 @@ public class SignUpFragment extends Fragment {
                     progressBar.setVisibility(View.GONE);
                     singUp.setVisibility(View.VISIBLE);
                 } else {
-
-                    Toast.makeText(getActivity(), "El email no esta en uso, por ende el usuario no existe", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Validando Información", Toast.LENGTH_LONG).show();
                     enviarSMS(nombre, email, password, telefono);
                 }
             }
@@ -194,6 +198,7 @@ public class SignUpFragment extends Fragment {
                 intent.putExtra("mobile", telefono);
                 intent.putExtra("verificationId", verificationId);
                 startActivity(intent);
+                getActivity().finish();
                 nameTextField.setText("");
                 emailEditText.setText("");
                 passwordEditText.setText("");

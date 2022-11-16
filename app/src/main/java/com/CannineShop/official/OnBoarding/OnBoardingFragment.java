@@ -11,8 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.CannineShop.official.Home;
 import com.CannineShop.official.MainActivity;
 import com.CannineShop.official.R;
+import com.CannineShop.official.SplashActivity;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class OnBoardingFragment extends Fragment {
 
@@ -27,10 +33,17 @@ public class OnBoardingFragment extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_on_boarding1, container, false);
         skip = root.findViewById(R.id.Skip);
         skip.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            getActivity().overridePendingTransition(0, desplazamiento_arriba);
-            startActivity(intent);
-            getActivity().finish();
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
+            if (user != null || account != null) {
+                getActivity().overridePendingTransition(0, desplazamiento_arriba);
+                startActivity(new Intent(getActivity(), Home.class));
+                getActivity().finish();
+            }else{
+                getActivity().overridePendingTransition(0, desplazamiento_arriba);
+                startActivity(new Intent(getActivity(), MainActivity.class));
+                getActivity().finish();
+            }
         });
         return root;
     }

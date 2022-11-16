@@ -18,6 +18,10 @@ import com.CannineShop.official.OnBoarding.OnBoardingFragment;
 import com.CannineShop.official.OnBoarding.OnBoardingFragment2;
 import com.CannineShop.official.OnBoarding.OnBoardingFragment3;
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -44,7 +48,7 @@ public class SplashActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.pager);
         pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
-        anim = AnimationUtils.loadAnimation(this,R.anim.o_b_anim);
+        anim = AnimationUtils.loadAnimation(this, R.anim.o_b_anim);
         viewPager.startAnimation(anim);
 
         splashImg.animate().translationY(-2300).setDuration(1000).setStartDelay(5000);
@@ -53,11 +57,11 @@ public class SplashActivity extends AppCompatActivity {
         lottieAnimationView.animate().translationY(3000).setDuration(1000).setStartDelay(5000);
     }
 
-    private static class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-
+    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
         public ScreenSlidePagerAdapter(@NonNull FragmentManager fm) {
             super(fm);
         }
+
 
         @NonNull
         @Override
@@ -72,6 +76,7 @@ public class SplashActivity extends AppCompatActivity {
             }
             return null;
         }
+
 
         @Override
         public int getCount() {

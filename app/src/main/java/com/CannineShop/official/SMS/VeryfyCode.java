@@ -151,12 +151,11 @@ public class VeryfyCode extends AppCompatActivity {
                 Destinos destinos = new Destinos(nombre, email, telefono);
                 myRef.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).setValue(destinos);
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                user.sendEmailVerification();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 Toast.makeText(this, "Cuenta Creada", Toast.LENGTH_SHORT).show();
                 finish();
+                user.sendEmailVerification();
             }
         }).addOnFailureListener(e -> Toast.makeText(this, "Cuenta Ya Vinculada", Toast.LENGTH_SHORT).show());
     }
@@ -279,12 +278,9 @@ public class VeryfyCode extends AppCompatActivity {
     //Flecha Atras
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            startActivity(new Intent(this, MainActivity.class));
-            overridePendingTransition(0, zoomOut);
-            finish();
-            return true;
-        }
+        startActivity(new Intent(this, MainActivity.class));
+        overridePendingTransition(0, zoomOut);
+        finish();
         return super.onOptionsItemSelected(item);
     }
 }
