@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".Login_Fragment">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
     <!--Text Field E-mail-->
     <com.google.android.material.textfield.TextInputLayout
@@ -17,7 +24,7 @@
         app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".3"
+        app:layout_constraintVertical_bias=".1"
         app:layout_constraintWidth_percent=".8"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusTopStart="20dp"
@@ -74,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPasswordLogin"
+        app:layout_constraintTop_toBottomOf="@+id/forgetPassword"
         app:layout_constraintVertical_bias="0.483"
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/animales"
@@ -107,6 +114,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:cornerRadius="30dp"
+        android:layout_marginTop="30px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,5 +122,6 @@
         app:layout_constraintVertical_bias="0.736"
         app:layout_constraintWidth_percent=".8" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
