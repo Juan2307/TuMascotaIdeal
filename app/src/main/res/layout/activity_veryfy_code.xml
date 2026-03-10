@@ -28,7 +28,7 @@
             android:text="VERIFICACION DEL SMS"
             android:textColor="@color/colorTextPrimary"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
             android:gravity="center"
             android:text="Ingrese el SMS enviada a"
             android:textColor="@color/colorTextSecondary"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textMobile"
@@ -51,7 +51,7 @@
             android:layout_gravity="center"
             android:textColor="@color/colorTextPrimary"
             android:textSize="14sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                 android:textColor="@color/colorTextPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:ignore="LabelFor"/>
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/inputCode2"
@@ -87,7 +87,7 @@
                 android:textColor="@color/colorTextPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:ignore="LabelFor"/>
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/inputCode3"
@@ -102,7 +102,7 @@
                 android:textColor="@color/colorTextPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:ignore="LabelFor"/>
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/inputCode4"
@@ -117,7 +117,7 @@
                 android:textColor="@color/colorTextPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:ignore="LabelFor"/>
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/inputCode5"
@@ -132,7 +132,7 @@
                 android:textColor="@color/colorTextPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:ignore="LabelFor"/>
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/inputCode6"
@@ -147,7 +147,7 @@
                 android:textColor="@color/colorTextPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:ignore="LabelFor"/>
+                tools:ignore="LabelFor" />
         </LinearLayout>
 
         <LinearLayout
@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:text="No recibí el SMS"
                 android:textColor="@color/colorTextSecondary"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textResendOTP"
@@ -172,7 +172,7 @@
                 android:text="REENVIAR CODIGO"
                 android:textColor="@color/colorAccent2"
                 android:textSize="15sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -181,24 +181,24 @@
             android:layout_height="wrap_content">
 
 
-        <Button
-            android:id="@+id/buttonVerify"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:text="VERIFICAR"
-            app:cornerRadius="30dp"
-            android:backgroundTint="@color/pink"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+            <Button
+                android:id="@+id/buttonVerify"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:text="VERIFICAR"
+                app:cornerRadius="30dp"
+                android:backgroundTint="@color/pink"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
         </FrameLayout>
 

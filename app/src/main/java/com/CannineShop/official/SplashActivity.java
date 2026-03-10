@@ -18,10 +18,6 @@ import com.CannineShop.official.OnBoarding.OnBoardingFragment;
 import com.CannineShop.official.OnBoarding.OnBoardingFragment2;
 import com.CannineShop.official.OnBoarding.OnBoardingFragment3;
 import com.airbnb.lottie.LottieAnimationView;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
 

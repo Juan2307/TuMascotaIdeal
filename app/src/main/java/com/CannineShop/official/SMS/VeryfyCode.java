@@ -1,8 +1,5 @@
 package com.CannineShop.official.SMS;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,10 +14,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.CannineShop.official.Destinos.Destinos;
-import com.CannineShop.official.ForgotPassword;
-import com.CannineShop.official.Home;
 import com.CannineShop.official.MainActivity;
 import com.CannineShop.official.R;
 import com.google.firebase.FirebaseException;

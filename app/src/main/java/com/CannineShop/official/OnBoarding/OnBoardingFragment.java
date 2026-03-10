@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import com.CannineShop.official.Home;
 import com.CannineShop.official.MainActivity;
 import com.CannineShop.official.R;
-import com.CannineShop.official.SplashActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;

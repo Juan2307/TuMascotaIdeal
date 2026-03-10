@@ -41,7 +41,7 @@
             android:layout_below="@id/mv_title"
             android:layout_toEndOf="@id/mv_image"
             android:layout_marginStart="10dp"
-            android:rating="4"/>
+            android:rating="4" />
 
         <TextView
             android:id="@+id/mv_desc"
