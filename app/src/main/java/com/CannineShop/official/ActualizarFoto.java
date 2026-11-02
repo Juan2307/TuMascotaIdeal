@@ -28,7 +28,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
+import com.canhub.cropper.CropImage;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -137,7 +137,7 @@ public class ActualizarFoto extends AppCompatActivity {
 
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            imagenUri = result.getUri();
+            //imagenUri = result.getUriContent();
             profileImageView.setImageURI(imagenUri);
         } else {
             Toast.makeText(ActualizarFoto.this, "Error Intente De Nuevo", Toast.LENGTH_SHORT).show();

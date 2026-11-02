@@ -53,16 +53,16 @@ dependencies {
 
 
     implementation 'com.airbnb.android:lottie:3.2.0'
-    implementation 'com.cuberto:liquid-swipe:1.0.0'
+    // implementation 'com.github.Cuberto:liquid-swipe-android:1.0.0'
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.21"
 
     //Leer PDF
-    implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
+    // implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
     //Dialog Cargando
-    implementation 'com.github.d-max:spots-dialog:1.1@aar'
+    implementation 'com.github.d-max:spots-dialog:v1.1'
     //Img Circulo Perfil
-    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+    api 'com.github.CanHub:Android-Image-Cropper:3.1.1'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.squareup.picasso:picasso:2.8'
 }
