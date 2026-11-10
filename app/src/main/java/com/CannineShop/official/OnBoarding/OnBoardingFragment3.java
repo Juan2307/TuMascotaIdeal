@@ -23,48 +23,68 @@ import com.google.firebase.auth.FirebaseUser;
 public class OnBoardingFragment3 extends Fragment {
 
     FloatingActionButton button;
+
     TextView skip;
+
     //Variables Transicion
     public static int desplazamiento_arriba = R.anim.slide_out_up;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_on_boarding3, container, false);
         button = root.findViewById(R.id.fab);
         skip = root.findViewById(R.id.Skip);
 
-
         button.setOnClickListener(view -> {
+
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
+
             if (user != null || account != null) {
+
                 getActivity().overridePendingTransition(0, desplazamiento_arriba);
                 startActivity(new Intent(getActivity(), Home.class));
                 getActivity().finish();
-            }else{
+
+            } else {
+
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 getActivity().overridePendingTransition(0, desplazamiento_arriba);
                 startActivity(intent);
                 getActivity().finish();
+
             }
+
         });
 
         skip.setOnClickListener(v -> {
+
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
+
             if (user != null || account != null) {
+
                 getActivity().overridePendingTransition(0, desplazamiento_arriba);
                 startActivity(new Intent(getActivity(), Home.class));
                 getActivity().finish();
-            }else{
+
+            } else {
+
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 getActivity().overridePendingTransition(0, desplazamiento_arriba);
                 startActivity(intent);
                 getActivity().finish();
+
             }
+
         });
+
         return root;
+
     }
+
 }

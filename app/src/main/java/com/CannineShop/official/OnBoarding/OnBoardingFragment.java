@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import com.CannineShop.official.Home;
 import com.CannineShop.official.MainActivity;
 import com.CannineShop.official.R;
-import com.CannineShop.official.SplashActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,28 +22,41 @@ import com.google.firebase.auth.FirebaseUser;
 public class OnBoardingFragment extends Fragment {
 
     TextView skip;
+
     //Variables Transicion
     public static int desplazamiento_arriba = R.anim.slide_out_up;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_on_boarding1, container, false);
+
         skip = root.findViewById(R.id.Skip);
+
         skip.setOnClickListener(v -> {
+
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
+
             if (user != null || account != null) {
+
                 getActivity().overridePendingTransition(0, desplazamiento_arriba);
                 startActivity(new Intent(getActivity(), Home.class));
                 getActivity().finish();
-            }else{
+
+            } else {
+
                 getActivity().overridePendingTransition(0, desplazamiento_arriba);
                 startActivity(new Intent(getActivity(), MainActivity.class));
                 getActivity().finish();
+
             }
+
         });
+
         return root;
+
     }
+
 }
