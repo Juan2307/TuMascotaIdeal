@@ -32,7 +32,7 @@ public class OnBoardingFragment2 extends Fragment {
 
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_on_boarding2, container, false);
 
-        skip = root.findViewById(R.id.Skip);
+        skip = root.findViewById(R.id.SkipId);
 
         skip.setOnClickListener(v -> {
 

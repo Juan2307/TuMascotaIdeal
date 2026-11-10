@@ -35,7 +35,7 @@ public class OnBoardingFragment3 extends Fragment {
 
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_on_boarding3, container, false);
         button = root.findViewById(R.id.fab);
-        skip = root.findViewById(R.id.Skip);
+        skip = root.findViewById(R.id.SkipId);
 
         button.setOnClickListener(view -> {
 
