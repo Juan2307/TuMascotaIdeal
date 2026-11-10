@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
     android:overScrollMode="never"
     android:scrollbars="none"
     tools:context=".SMS.VeryfyCode">
@@ -26,7 +27,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="VERIFICACION DEL SMS"
-            android:textColor="@color/colorTextPrimary"
             android:textSize="20sp"
             android:textStyle="bold"/>
 
@@ -38,18 +38,16 @@
             android:layout_marginEnd="50dp"
             android:gravity="center"
             android:text="Ingrese el SMS enviada a"
-            android:textColor="@color/colorTextSecondary"
             android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/textMobile"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="50dp"
             android:layout_gravity="center"
-            android:textColor="@color/colorTextPrimary"
             android:textSize="14sp"
             android:textStyle="bold"/>
 
@@ -69,7 +67,6 @@
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:maxLength="1"
-                android:textColor="@color/colorTextPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor"/>
@@ -84,7 +81,6 @@
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:maxLength="1"
-                android:textColor="@color/colorTextPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor"/>
@@ -99,7 +95,6 @@
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:maxLength="1"
-                android:textColor="@color/colorTextPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor"/>
@@ -114,7 +109,6 @@
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:maxLength="1"
-                android:textColor="@color/colorTextPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor"/>
@@ -129,7 +123,6 @@
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:maxLength="1"
-                android:textColor="@color/colorTextPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor"/>
@@ -144,7 +137,6 @@
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:maxLength="1"
-                android:textColor="@color/colorTextPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor"/>
@@ -161,7 +153,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="No recibí el SMS"
-                android:textColor="@color/colorTextSecondary"
                 android:textSize="14sp"/>
 
             <TextView

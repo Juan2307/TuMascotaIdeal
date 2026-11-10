@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?attr/colorSurface"
     tools:context=".Login_Fragment">
 
 
@@ -108,9 +109,9 @@
         android:id="@+id/login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/pink"
+        android:backgroundTint="?attr/colorPrimary"
         android:text="Iniciar Sesión"
-        android:textColor="@color/white"
+        android:textColor="?attr/colorOnPrimary"
         android:textSize="16sp"
         android:textStyle="bold"
         app:cornerRadius="30dp"

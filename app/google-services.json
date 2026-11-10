@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "142256603150",
+    "firebase_url": "https://tumascotaideal-1320c-default-rtdb.firebaseio.com",
     "project_id": "tumascotaideal-1320c",
     "storage_bucket": "tumascotaideal-1320c.appspot.com"
   },
@@ -14,8 +15,12 @@
       },
       "oauth_client": [
         {
-          "client_id": "142256603150-ud7piqq7e0l3rrjq4s9tkpd0goc76spn.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "142256603150-9frq3ikecsgmh538i36puho22h5qin3h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.CannineShop.official",
+            "certificate_hash": "1c951515b8ba524e492bf883d976bc72eb02c3da"
+          }
         }
       ],
       "api_key": [
@@ -25,12 +30,7 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "142256603150-ud7piqq7e0l3rrjq4s9tkpd0goc76spn.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

@@ -13,4 +13,31 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="SinActionBar" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">#F48FB1</item>
+        <item name="colorPrimaryVariant">#AD456F</item>
+        <item name="colorOnPrimary">#30121F</item>
+        <item name="colorSecondary">#80CBC4</item>
+        <item name="colorSecondaryVariant">#4F9A94</item>
+        <item name="colorOnSecondary">#10201E</item>
+        <item name="colorSurface">#211D20</item>
+        <item name="colorOnSurface">#F5EEF2</item>
+        <item name="android:colorBackground">#171417</item>
+        <item name="android:statusBarColor">#171417</item>
+        <item name="android:navigationBarColor">#171417</item>
+    </style>
+
+    <style name="ConActionBar" parent="Theme.MaterialComponents">
+        <item name="colorPrimary">#F48FB1</item>
+        <item name="colorPrimaryVariant">#AD456F</item>
+        <item name="colorOnPrimary">#30121F</item>
+        <item name="colorSecondary">#80CBC4</item>
+        <item name="colorSecondaryVariant">#4F9A94</item>
+        <item name="colorOnSecondary">#10201E</item>
+        <item name="colorSurface">#211D20</item>
+        <item name="colorOnSurface">#F5EEF2</item>
+        <item name="android:colorBackground">#171417</item>
+        <item name="android:statusBarColor">#171417</item>
+        <item name="android:navigationBarColor">#171417</item>
+    </style>
 </resources>
