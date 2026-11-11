@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "142256603150-41jjlqj5d8sf1563lcols14uj9rr7rjb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.CannineShop.official",
+            "certificate_hash": "f56b775e2193be06497218dd036011c08a71e7e7"
+          }
+        },
+        {
           "client_id": "142256603150-9frq3ikecsgmh538i36puho22h5qin3h.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
