@@ -1,13 +1,10 @@
 package com.CannineShop.official;
 
-import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.CannineShop.official.Internet.Internet;
+import com.canhub.cropper.CropImage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +26,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.squareup.picasso.Picasso;
-import com.canhub.cropper.CropImage;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -37,7 +34,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ActualizarFoto extends AppCompatActivity {
 
-    private static final int PERMISSION_STORAGE_CODE = 1000;
     String id;
     CircleImageView profileImageView;
     Button closeButton, saveButton, deleteButton;
@@ -48,7 +44,6 @@ public class ActualizarFoto extends AppCompatActivity {
 
     Uri imagenUri;
     String myUri = "";
-    String sinfoto = "https://firebasestorage.googleapis.com/v0/b/tumascotaideal-1320c.appspot.com/o/Profile%20Pic%2Fsinfoto.png?alt=media&token=3617feb6-0b7c-457f-81ce-2d713b3d670a";
     StorageTask uploadTask;
     StorageReference storageProfilePicsRef;
     //Atributos De Transicion
@@ -76,23 +71,15 @@ public class ActualizarFoto extends AppCompatActivity {
         profileChangeBtn = findViewById(R.id.change_profile_btn);
 
         //Proceso Al Dar Click
-        profileChangeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        profileChangeBtn.setOnClickListener(v -> CropImage.activity()
+                .setAspectRatio(1, 1)
+                .start(ActualizarFoto.this));
 
-                if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                    String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                    requestPermissions(permissions, PERMISSION_STORAGE_CODE);
-                } else{
-                    CropImage.activity().setAspectRatio(1, 1).start(ActualizarFoto.this);
-                }
-
-            }
-        });
         closeButton.setOnClickListener(view -> {
             startActivity(new Intent(ActualizarFoto.this, ActualizarDatos.class));
             finish();
         });
+
         saveButton.setOnClickListener(view -> {
             if (Internet.isOnline(ActualizarFoto.this)) {
                 uploadProfileImage();
@@ -100,12 +87,18 @@ public class ActualizarFoto extends AppCompatActivity {
                 Toast.makeText(ActualizarFoto.this, "¡Sin Acceso A Internet, Verifique Su Conexión.!", Toast.LENGTH_SHORT).show();
             }
         });
+
         deleteButton.setOnClickListener(v -> {
             if (Internet.isOnline(ActualizarFoto.this)) {
                 final StorageReference fileRef = storageProfilePicsRef.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid() + ".jpg");
-                databaseReference.child(id).child("image").removeValue();
-                fileRef.delete();
-                Toast.makeText(ActualizarFoto.this, "¡Foto Eliminada!", Toast.LENGTH_SHORT).show();
+                databaseReference.child(id).child("image").removeValue()
+                        .addOnSuccessListener(unused -> {
+                            fileRef.delete();
+                            imagenUri = null;
+                            profileImageView.setImageResource(R.drawable.sinfoto);
+                            Toast.makeText(ActualizarFoto.this, "¡Foto Eliminada!", Toast.LENGTH_SHORT).show();
+                        })
+                        .addOnFailureListener(e -> Toast.makeText(ActualizarFoto.this, "Error al eliminar foto: " + e.getMessage(), Toast.LENGTH_SHORT).show());
             } else {
                 Toast.makeText(ActualizarFoto.this, "¡Sin Acceso A Internet, Verifique Su Conexión.!", Toast.LENGTH_SHORT).show();
             }
@@ -119,8 +112,19 @@ public class ActualizarFoto extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                 if (datasnapshot.exists() && datasnapshot.getChildrenCount() > 0) {
                     if (datasnapshot.hasChild("image")) {
-                        String image = Objects.requireNonNull(datasnapshot.child("image").getValue()).toString();
-                        Picasso.get().load(image).into(profileImageView);
+                        Object imgObj = datasnapshot.child("image").getValue();
+                        if (imgObj != null) {
+                            String image = imgObj.toString();
+                            if (!image.isEmpty()) {
+                                Picasso.get().load(image).placeholder(R.drawable.sinfoto).into(profileImageView);
+                            } else {
+                                profileImageView.setImageResource(R.drawable.sinfoto);
+                            }
+                        } else {
+                            profileImageView.setImageResource(R.drawable.sinfoto);
+                        }
+                    } else {
+                        profileImageView.setImageResource(R.drawable.sinfoto);
                     }
                 }
             }
@@ -134,23 +138,28 @@ public class ActualizarFoto extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            //imagenUri = result.getUriContent();
-            profileImageView.setImageURI(imagenUri);
-        } else {
-            Toast.makeText(ActualizarFoto.this, "Error Intente De Nuevo", Toast.LENGTH_SHORT).show();
-        }
         super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK && result != null) {
+                imagenUri = result.getUriContent();
+                profileImageView.setImageURI(imagenUri);
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result != null ? result.getError() : null;
+                Toast.makeText(ActualizarFoto.this, "Error al recortar la imagen: " + (error != null ? error.getMessage() : "Desconocido"), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     private void uploadProfileImage() {
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Set your profile");
-        progressDialog.setMessage("Please wait, while we are setting your Data");
-        progressDialog.show();
         if (imagenUri != null) {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Actualizar foto de perfil");
+            progressDialog.setMessage("Por favor espere mientras se sube la imagen...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+
             final StorageReference fileRef = storageProfilePicsRef.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid() + ".jpg");
             uploadTask = fileRef.putFile(imagenUri);
 
@@ -160,20 +169,24 @@ public class ActualizarFoto extends AppCompatActivity {
                 }
                 return fileRef.getDownloadUrl();
             }).addOnCompleteListener((OnCompleteListener<Uri>) task -> {
-                if (task.isSuccessful()) {
+                progressDialog.dismiss();
+                if (task.isSuccessful() && task.getResult() != null) {
                     Uri downloadUrl = task.getResult();
                     myUri = downloadUrl.toString();
 
                     HashMap<String, Object> userMap = new HashMap<>();
                     userMap.put("image", myUri);
 
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).updateChildren(userMap);
-                    progressDialog.dismiss();
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).updateChildren(userMap)
+                            .addOnSuccessListener(unused -> Toast.makeText(ActualizarFoto.this, "¡Foto de perfil actualizada exitosamente!", Toast.LENGTH_SHORT).show())
+                            .addOnFailureListener(e -> Toast.makeText(ActualizarFoto.this, "Error al guardar en base de datos: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                } else {
+                    String errorMsg = task.getException() != null ? task.getException().getMessage() : "Error desconocido";
+                    Toast.makeText(ActualizarFoto.this, "Error al subir la imagen: " + errorMsg, Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
-            progressDialog.dismiss();
-            Toast.makeText(ActualizarFoto.this, "Image Not Select", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ActualizarFoto.this, "Por favor seleccione una imagen primero", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -44,9 +44,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -100,30 +103,60 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         naviagtionDrawer();
 
+        //Header Menu Hooks
+        View headerView = navigationView.getHeaderView(0);
+        CircleImageView navProfileImageView = headerView != null ? headerView.findViewById(R.id.portada) : null;
+        TextView navNameTextView = headerView != null ? headerView.findViewById(R.id.name) : null;
+        TextView navCorreoTextView = headerView != null ? headerView.findViewById(R.id.correo) : null;
+
         //Objetos FireBase
         user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
-        //Obtengo el ID Ingresado
-        id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        //Obtengo los datos de ID.
-        mDatabaseReference.child("Usuarios").child(id).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //Si el User Existe.
-                if (dataSnapshot.exists()) {
-                    //Guardo el Nombre y Apellido En Las Variables.
-                    String name = Objects.requireNonNull(dataSnapshot.child("nombre").getValue()).toString();
-                    //Actualizo las Variables
-                    nameTextView.setText("¡Hola " + name + "!");
+
+        if (user != null) {
+            id = user.getUid();
+            if (navCorreoTextView != null && user.getEmail() != null) {
+                navCorreoTextView.setText(user.getEmail());
+            }
+
+            //Obtengo los datos de ID.
+            mDatabaseReference.child("Usuarios").child(id).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        if (dataSnapshot.hasChild("nombre")) {
+                            Object nameObj = dataSnapshot.child("nombre").getValue();
+                            if (nameObj != null) {
+                                String name = nameObj.toString();
+                                nameTextView.setText("¡Hola " + name + "!");
+                                if (navNameTextView != null) {
+                                    navNameTextView.setText(name);
+                                }
+                            }
+                        }
+
+                        if (navProfileImageView != null) {
+                            if (dataSnapshot.hasChild("image")) {
+                                Object imgObj = dataSnapshot.child("image").getValue();
+                                if (imgObj != null && !imgObj.toString().isEmpty()) {
+                                    Picasso.get().load(imgObj.toString()).placeholder(R.drawable.sinfoto).into(navProfileImageView);
+                                } else {
+                                    navProfileImageView.setImageResource(R.drawable.sinfoto);
+                                }
+                            } else {
+                                navProfileImageView.setImageResource(R.drawable.sinfoto);
+                            }
+                        }
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
+        }
     }
 
     //Navigation Drawer Functions
